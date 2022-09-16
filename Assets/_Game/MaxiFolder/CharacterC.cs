@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterC : MonoBehaviour
 {
     private CharacterM _characterM;
+    private float firingInterval;
 
     private void Awake()
     {
@@ -20,8 +21,8 @@ public class CharacterC : MonoBehaviour
 
     private void MoveUpdate()
     {
-        var h = Input.GetAxis("Horizontal");
-        var v = Input.GetAxis("Vertical");
+        var h = Input.GetAxisRaw("Horizontal");
+        var v = Input.GetAxisRaw("Vertical");
         if (h !=0 || v != 0)
         {
             _characterM.Move(new Vector3(h, 0, v));
@@ -30,9 +31,14 @@ public class CharacterC : MonoBehaviour
 
     private void ShootUpdate()
     {
-        if (Input.GetButtonDown("Fire1"))
+        firingInterval -= Time.deltaTime;
+        if (firingInterval <= 0f)
         {
-            _characterM.Shoot();
+            if (Input.GetButton("Fire1"))
+            {
+                _characterM.Shoot();
+                firingInterval = _characterM.Stats.TotalAttackSpeed;
+            }
         }
     }
     

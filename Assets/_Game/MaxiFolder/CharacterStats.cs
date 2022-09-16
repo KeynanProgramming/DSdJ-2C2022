@@ -7,21 +7,18 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private int attackPierce = 1;
     [SerializeField] private float attackSpeed = 1;
     [SerializeField] private float attackKnockBack = 1;
-    [SerializeField] private float arrowSpreadDegrees = 1;
 
     private int _simultaneousArrowsBuff;
     private int _attackDamageBuff;
     private int _attackPierceBuff;
     private float _attackSpeedBuff;
     private float _attackKnockBackBuff;
-    private float _arrowSpreadDegreesBuff;
 
     public int TotalSimultaneousArrows => simultaneousArrows + _simultaneousArrowsBuff;
     public int TotalAttackDamage => attackDamage + _attackDamageBuff;
     public int TotalAttackPierce => attackPierce + _attackPierceBuff;
     public float TotalAttackSpeed => attackSpeed + _attackSpeedBuff;
     public float TotalAttackKnockBack => attackKnockBack + _attackKnockBackBuff;
-    public float TotalArrowSpreadDegreesArrows => arrowSpreadDegrees + _arrowSpreadDegreesBuff;
 
     public void SimultaneousArrowsBuff(int buffAmount)
     {
@@ -71,15 +68,5 @@ public class CharacterStats : MonoBehaviour
     public void AttackKnockBackDeBuff(float deBuffAmount)
     {
         _attackKnockBackBuff = deBuffAmount;
-    }
-    
-    public void ArrowSpreadDegreesBuff(float buffAmount)
-    {
-        _arrowSpreadDegreesBuff = buffAmount;
-    }
-    
-    public void ArrowSpreadDegreesDeBuff(float deBuffAmount)
-    {
-        _arrowSpreadDegreesBuff = deBuffAmount;
     }
 }

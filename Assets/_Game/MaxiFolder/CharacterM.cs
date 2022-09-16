@@ -9,7 +9,7 @@ public class CharacterM : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     
     private Rigidbody _rb;
-    private CharacterStats _characterStats;
+    public CharacterStats Stats { get; private set; }
 
     public Vector3 GetMouseWorldPosition()
     {
@@ -20,7 +20,7 @@ public class CharacterM : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _characterStats = GetComponent<CharacterStats>();
+        Stats = GetComponent<CharacterStats>();
     }
     
     public void Move(Vector3 dir)
@@ -31,14 +31,41 @@ public class CharacterM : MonoBehaviour
 
     public void Shoot()
     {
-        ProjectileSpawn(0f);
+        switch (Stats.TotalSimultaneousArrows)
+        {
+            case 1:
+                ProjectileSpawn(0f);
+                break;
+            case 2:
+                ProjectileSpawn(-15f);
+                ProjectileSpawn(15f);
+                break;
+            case 3:
+                ProjectileSpawn(-15f);
+                ProjectileSpawn(0f);
+                ProjectileSpawn(15f);
+                break;
+            case 4:
+                ProjectileSpawn(-45f);
+                ProjectileSpawn(-15f);
+                ProjectileSpawn(15f);
+                ProjectileSpawn(45f);
+                break;
+            case 5:
+                ProjectileSpawn(-45f);
+                ProjectileSpawn(-15f); 
+                ProjectileSpawn(0f);
+                ProjectileSpawn(15f);
+                ProjectileSpawn(45f);
+                break;
+        }
     }
 
     private void ProjectileSpawn(float angle)
     {
         var go = Instantiate(projectilePrefab,firePoint.position,Quaternion.identity);
         var projectile = go.GetComponent<Projectile>();
-        projectile.StatSetup(_characterStats.TotalAttackDamage,_characterStats.TotalAttackPierce,_characterStats.TotalAttackKnockBack);
+        projectile.StatSetup(Stats.TotalAttackDamage,Stats.TotalAttackPierce,Stats.TotalAttackKnockBack);
         projectile.transform.forward = Quaternion.Euler(0f,angle,0f) * transform.forward;
     }
 }
