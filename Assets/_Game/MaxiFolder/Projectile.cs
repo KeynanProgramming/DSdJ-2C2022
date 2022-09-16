@@ -27,4 +27,18 @@ public class Projectile : MonoBehaviour
     {
         transform.position += transform.forward * (speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Health>())
+        {
+            var go = other.gameObject.GetComponent<Health>();
+            go.TakeDamage(Damage);
+            Pierce--;
+            if (Pierce <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }
