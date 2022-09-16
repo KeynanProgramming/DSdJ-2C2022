@@ -15,4 +15,9 @@ MonoBehaviour:
   posibleRooms:
   - {fileID: 7953743682080531272, guid: 4b1d93cb987fabb4486dccc8e47a1f13, type: 3}
   posibleEnemies: []
-  posibleObstacles: []
+  bossRoomType: {fileID: 7953743682080531272, guid: 4b1d93cb987fabb4486dccc8e47a1f13,
+    type: 3}
+  posibleObstacles:
+  - {fileID: 6473156577827815943, guid: f02a40f4b1e919146af2509d70e6f4e3, type: 3}
+  - {fileID: 6473156577827815943, guid: f02a40f4b1e919146af2509d70e6f4e3, type: 3}
+  - {fileID: 6473156577827815943, guid: f02a40f4b1e919146af2509d70e6f4e3, type: 3}

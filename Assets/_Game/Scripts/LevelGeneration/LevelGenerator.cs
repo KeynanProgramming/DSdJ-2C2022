@@ -1,12 +1,14 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private Node[] nodes;
+    private Transform playerSpawn;
 
     private void Start()
     {
+        AsignateBossRoom();
         InstaceRooms();
     }
 
@@ -19,7 +21,8 @@ public class LevelGenerator : MonoBehaviour
     }
     void AsignateBossRoom()
     {
-
+        var index = Random.Range(0, nodes.Length);
+        nodes[index].isBossRoom = true;
     }
 
 }
