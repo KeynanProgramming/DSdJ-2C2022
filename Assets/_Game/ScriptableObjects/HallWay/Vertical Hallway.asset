@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cbd4e0e4583f04b88f9f2e6868b8f0, type: 3}
+  m_Name: Vertical Hallway
+  m_EditorClassIdentifier: 
+  posibleRooms:
+  - {fileID: 6494955313522118330, guid: 08d5ff9540b7d774d91961936187428b, type: 3}
+  posibleEnemies: []
+  posibleObstacles: []
