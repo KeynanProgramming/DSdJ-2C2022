@@ -1,5 +1,3 @@
-using System;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class CharacterM : MonoBehaviour
@@ -19,33 +17,6 @@ public class CharacterM : MonoBehaviour
         return Physics.Raycast(ray, out RaycastHit raycastHit, 100f, mouseColliderLayerMask) ? raycastHit.point : Vector3.zero;
     }
     
-    public bool IsInInteractRange
-    {
-        get => _isInInteractRange;
-        set
-        {
-            _isInInteractRange = value;
-            OnCharacterInteractRange?.Invoke(Interactable != null ? Interactable.InteractionType : InteractionType.None);
-        } 
-    }
-    [CanBeNull] public Interactable Interactable { get; set; }
-    private bool _isInInteractRange;
-    public event Action OnCharacterInteract;
-    public event Action<InteractionType> OnCharacterInteractRange;
-    private void CharacterInteraction()
-    {
-        if (!(Interactable is null)) Interactable.Interaction();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && IsInInteractRange)
-        {
-            OnCharacterInteract?.Invoke();
-            CharacterInteraction();
-        }
-    }
-
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();

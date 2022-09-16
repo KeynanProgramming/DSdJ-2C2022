@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cbd4e0e4583f04b88f9f2e6868b8f0, type: 3}
+  m_Name: MiddleRoom
+  m_EditorClassIdentifier: 
+  posibleRooms:
+  - {fileID: 6013134374310383297, guid: 16d50e0f31a8521428c6491e1ccb7289, type: 3}
+  posibleEnemies: []
+  bossRoomType: {fileID: 6013134374310383297, guid: 16d50e0f31a8521428c6491e1ccb7289,
+    type: 3}
+  posibleObstacles:
+  - {fileID: 6473156577827815943, guid: f02a40f4b1e919146af2509d70e6f4e3, type: 3}
+  - {fileID: 6473156577827815943, guid: f02a40f4b1e919146af2509d70e6f4e3, type: 3}
+  - {fileID: 6473156577827815943, guid: f02a40f4b1e919146af2509d70e6f4e3, type: 3}

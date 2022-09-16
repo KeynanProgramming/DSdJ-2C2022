@@ -286,9 +286,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simultaneousArrows: 1
   attackDamage: 1
-  attackPierce: 1
+  attackPierce: 2
   attackSpeed: 1
-  attackKnockBack: 1
+  attackKnockBack: 5
 --- !u!1 &87222777
 GameObject:
   m_ObjectHideFlags: 0
