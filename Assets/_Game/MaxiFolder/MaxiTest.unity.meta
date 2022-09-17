@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Game/MaxiFolder/MaxiTest.unity.meta
 guid: 31a970b8feae34a4d847161b6a6c297b
+========
+guid: 4e412ab1f26387749aa2c1fe0dc48eda
+folderAsset: yes
+>>>>>>>> Level-Generator:Assets/_Game/MaxiFolder.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
