@@ -23,7 +23,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable
 
     #endregion
     
-    [CanBeNull] protected CharacterM Character;
+    protected CharacterC Character;
     protected string InteractableName;
     public string Name => InteractableName;
     public InteractionType InteractionType => interactionType;
@@ -40,7 +40,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            Character = other.GetComponent<CharacterM>();
+            Character = other.GetComponent<CharacterC>();
             if (Character == null) return;
             Character.Interactable = this;
             Character.IsInInteractRange = true;

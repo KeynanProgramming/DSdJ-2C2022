@@ -1,5 +1,3 @@
-using System;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class CharacterM : MonoBehaviour
@@ -19,33 +17,6 @@ public class CharacterM : MonoBehaviour
         return Physics.Raycast(ray, out RaycastHit raycastHit, 100f, mouseColliderLayerMask) ? raycastHit.point : Vector3.zero;
     }
     
-    public bool IsInInteractRange
-    {
-        get => _isInInteractRange;
-        set
-        {
-            _isInInteractRange = value;
-            OnCharacterInteractRange?.Invoke(Interactable != null ? Interactable.InteractionType : InteractionType.None);
-        } 
-    }
-    [CanBeNull] public Interactable Interactable { get; set; }
-    private bool _isInInteractRange;
-    public event Action OnCharacterInteract;
-    public event Action<InteractionType> OnCharacterInteractRange;
-    private void CharacterInteraction()
-    {
-        if (!(Interactable is null)) Interactable.Interaction();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && IsInInteractRange)
-        {
-            OnCharacterInteract?.Invoke();
-            CharacterInteraction();
-        }
-    }
-
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -66,26 +37,28 @@ public class CharacterM : MonoBehaviour
                 ProjectileSpawn(0f);
                 break;
             case 2:
-                ProjectileSpawn(-15f);
-                ProjectileSpawn(15f);
+                ProjectileSpawn(-10f);
+                ProjectileSpawn(10f);
                 break;
             case 3:
-                ProjectileSpawn(-15f);
+                ProjectileSpawn(-10f);
                 ProjectileSpawn(0f);
-                ProjectileSpawn(15f);
+                ProjectileSpawn(10f);
                 break;
             case 4:
-                ProjectileSpawn(-45f);
-                ProjectileSpawn(-15f);
-                ProjectileSpawn(15f);
-                ProjectileSpawn(45f);
+                ProjectileSpawn(-20f);
+                ProjectileSpawn(-10f);
+                ProjectileSpawn(10f);
+                ProjectileSpawn(20f);
                 break;
             case 5:
-                ProjectileSpawn(-45f);
-                ProjectileSpawn(-15f); 
+                ProjectileSpawn(-20f);
+                ProjectileSpawn(-10f); 
                 ProjectileSpawn(0f);
-                ProjectileSpawn(15f);
-                ProjectileSpawn(45f);
+                ProjectileSpawn(10f);
+                ProjectileSpawn(20f);
+                break;
+            default: ProjectileSpawn(0f);
                 break;
         }
     }
@@ -96,5 +69,10 @@ public class CharacterM : MonoBehaviour
         var projectile = go.GetComponent<Projectile>();
         projectile.StatSetup(Stats.TotalAttackDamage,Stats.TotalAttackPierce,Stats.TotalAttackKnockBack);
         projectile.transform.forward = Quaternion.Euler(0f,angle,0f) * transform.forward;
+    }
+    
+    public void CharacterInteraction(Interactable interactable)
+    {
+        interactable.Interaction();
     }
 }
