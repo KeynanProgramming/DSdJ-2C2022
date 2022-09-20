@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,9 +5,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float lifespan = 3f;
     [SerializeField] private Collider sphereSolid;
-
-    private Rigidbody _rb;
-
+    
     public int Damage { get; private set; }
     public int Pierce { get; private set; }
     public float KnockBack { get; private set; }
@@ -20,12 +16,7 @@ public class Projectile : MonoBehaviour
         Pierce = pierce;
         KnockBack = knockBack;
     }
-
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody>();
-    }
-
+    
     private void Start()
     {
         Destroy(gameObject,lifespan);
@@ -33,7 +24,8 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        transform.position += transform.forward * (speed * Time.deltaTime);
+        var t = transform;
+        t.position += t.forward * (speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,7 +54,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("CanPierce"))
         {
             sphereSolid.enabled = false;
         }
@@ -70,7 +62,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("CanPierce"))
         {
             sphereSolid.enabled = true;
         }
