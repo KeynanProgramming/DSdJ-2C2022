@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 8478570185576491774}
   - component: {fileID: 8478570185576491773}
   - component: {fileID: 8478570185576491764}
+  - component: {fileID: 6244460207300483484}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -201,7 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ce1198a023ebe478ed9b865067bbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   cameraObject: {fileID: 0}
   mouseColliderLayerMask:
     serializedVersion: 2
@@ -221,8 +221,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f90d542734aa14bbf178f7e7500c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   simultaneousArrows: 1
   attackDamage: 1
   attackPierce: 1
   attackSpeed: 1
   attackKnockBack: 1
+  moveSpeed: 5
+--- !u!114 &6244460207300483484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478570185576491772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c30c95745291949b73d754aa30339d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1

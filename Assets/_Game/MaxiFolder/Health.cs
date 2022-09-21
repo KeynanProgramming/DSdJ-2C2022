@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField][Tooltip("Maximum amount of health")] 
+    [SerializeField] [Tooltip("Maximum amount of health")]
     private int maxHealth = 100;
 
     public event Action OnConsumed;
     public event Action OnGained;
     public event Action OnDeath;
-    
+
     public int CurrentHealth { get; private set; }
     public int MaxHealth => maxHealth;
+    public int BaseMaxHealth { get; private set; }
     public float GetRatio => CurrentHealth / (float)MaxHealth;
     public int LastDamageTaken { get; private set; }
-    
     public bool IsDead { get; private set; }
     public bool IsInvulnerable { get; private set; }
 
@@ -32,12 +32,10 @@ public class Health : MonoBehaviour
         // call OnHeal action
         var trueHealAmount = CurrentHealth - healthBefore;
         if (trueHealAmount > 0)
-        {
             // use this to display amount healed on screen
             OnGained?.Invoke();
-        }
     }
-   
+
     public void TakeDamage(int damage)
     {
         if (IsDead || IsInvulnerable) return;
@@ -48,14 +46,12 @@ public class Health : MonoBehaviour
         // call OnDamage action
         LastDamageTaken = healthBefore - CurrentHealth;
         if (LastDamageTaken > 0)
-        {
             // use this to display on screen
             OnConsumed?.Invoke();
-        }
 
         HandleDeath();
     }
-    
+
     private void HandleDeath()
     {
         if (IsDead) return;
@@ -72,7 +68,7 @@ public class Health : MonoBehaviour
     {
         IsInvulnerable = false;
     }
-    
+
     public void SetInvulnerable(float time)
     {
         IsInvulnerable = true;
@@ -88,6 +84,22 @@ public class Health : MonoBehaviour
     public void BuffMaxHealth(int amount)
     {
         maxHealth += amount;
+        Heal(amount);
+    }
+
+    public void DeBuffMaxHealth(int amount)
+    {
+        maxHealth -= amount;
+        if (maxHealth >= CurrentHealth) return;
+        CurrentHealth = maxHealth;
+        OnConsumed?.Invoke();
+    }
+
+    public void SetStartingMaxHealth(int amount)
+    {
+        maxHealth = amount;
+        BaseMaxHealth = amount;
+        ResetToMax();
     }
 
     public void SetMaxHealth(int amount)

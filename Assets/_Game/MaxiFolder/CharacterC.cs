@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class CharacterC : MonoBehaviour
 {
-    private CharacterM _characterM;
+    public CharacterM CharacterM { get; private set; }
     private float _firingInterval;
     [CanBeNull] public Interactable Interactable { get; set; }
     private bool _isInInteractRange;
     public event Action OnCharacterInteract;
     public event Action<InteractionType> OnCharacterInteractRange;
+
     public bool IsInInteractRange
     {
         get => _isInInteractRange;
         set
         {
             _isInInteractRange = value;
-            OnCharacterInteractRange?.Invoke(Interactable != null ? Interactable.InteractionType : InteractionType.None);
-        } 
+            OnCharacterInteractRange?.Invoke(Interactable != null
+                ? Interactable.InteractionType
+                : InteractionType.None);
+        }
     }
 
     private void Awake()
     {
-        _characterM = GetComponent<CharacterM>();
+        CharacterM = GetComponent<CharacterM>();
     }
 
     private void Update()
@@ -37,32 +40,26 @@ public class CharacterC : MonoBehaviour
     {
         var h = Input.GetAxisRaw("Horizontal");
         var v = Input.GetAxisRaw("Vertical");
-        if (h !=0 || v != 0)
-        {
-            _characterM.Move(new Vector3(h, 0, v));
-        }
+        if (h != 0 || v != 0)
+            CharacterM.Move(new Vector3(h, 0, v));
         else
-        {
-            _characterM.Move(Vector3.zero);
-        }
+            CharacterM.Move(Vector3.zero);
     }
 
     private void ShootUpdate()
     {
         _firingInterval -= Time.deltaTime;
         if (_firingInterval <= 0f)
-        {
             if (Input.GetButton("Fire1"))
             {
-                _characterM.Shoot();
-                _firingInterval = _characterM.Stats.TotalAttackSpeed;
+                CharacterM.Shoot();
+                _firingInterval = CharacterM.Stats.TotalAttackSpeed;
             }
-        }
     }
-    
+
     private void LookAtMouse()
     {
-        var lookAt = _characterM.GetMouseWorldPosition();
+        var lookAt = CharacterM.GetMouseWorldPosition();
         lookAt.y = transform.position.y;
         transform.LookAt(lookAt);
     }
@@ -73,7 +70,7 @@ public class CharacterC : MonoBehaviour
         {
             if (Interactable == null) return;
             OnCharacterInteract?.Invoke();
-            _characterM.CharacterInteraction(Interactable);
+            CharacterM.CharacterInteraction(Interactable);
         }
     }
 }
