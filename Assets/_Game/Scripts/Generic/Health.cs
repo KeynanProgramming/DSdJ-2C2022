@@ -101,9 +101,4 @@ public class Health : MonoBehaviour
         BaseMaxHealth = amount;
         ResetToMax();
     }
-
-    public void SetMaxHealth(int amount)
-    {
-        maxHealth = amount;
-    }
 }
