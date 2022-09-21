@@ -1,15 +1,15 @@
-﻿using System;
-using JetBrains.Annotations;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum InteractionType
 {
     None,
-    MultipleArrows,
+    Spread,
     Damage,
     Pierce,
-    KnockBack,
     AtkSpeed,
+    KnockBack,
+    MoveSpeed,
+    MaxHealth
 }
 
 [RequireComponent(typeof(SphereCollider))]
@@ -18,15 +18,16 @@ public abstract class Interactable : MonoBehaviour, IInteractable
     #region SerializedFields
 
 #pragma warning disable 649
-    [SerializeField] private InteractionType interactionType;    
+    [SerializeField] private InteractionType interactionType;
 #pragma warning restore 649
 
     #endregion
-    
+
     protected CharacterC Character;
     protected string InteractableName;
     public string Name => InteractableName;
     public InteractionType InteractionType => interactionType;
+
     private void Awake()
     {
         GetComponent<SphereCollider>().isTrigger = true;
@@ -49,10 +50,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            CharacterClear();
-        } 
+        if (other.CompareTag("Player")) CharacterClear();
     }
 
     private void CharacterClear()
@@ -62,7 +60,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable
         Character.IsInInteractRange = false;
         Character = null;
     }
-    
+
     private void OnDisable()
     {
         CharacterClear();
