@@ -28,6 +28,11 @@ public class CharacterC : MonoBehaviour
         CharacterM = GetComponent<CharacterM>();
     }
 
+    private void Start()
+    {
+        CharacterM.Health.OnConsumed += () => print(CharacterM.Health.CurrentHealth);
+    }
+
     private void Update()
     {
         LookAtMouse();

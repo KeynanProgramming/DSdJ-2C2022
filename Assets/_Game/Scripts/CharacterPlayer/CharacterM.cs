@@ -7,7 +7,7 @@ public class CharacterM : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
 
-    private Rigidbody _rb;
+    public Rigidbody RigidBody { get; private set; }
     public CharacterStats Stats { get; private set; }
     public Health Health { get; private set; }
 
@@ -19,7 +19,7 @@ public class CharacterM : MonoBehaviour
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        RigidBody = GetComponent<Rigidbody>();
         Stats = GetComponent<CharacterStats>();
         Health = GetComponent<Health>();
     }
@@ -32,7 +32,8 @@ public class CharacterM : MonoBehaviour
     public void Move(Vector3 dir)
     {
         var value = Vector3.ClampMagnitude(dir, 1);
-        _rb.velocity = new Vector3(value.x * Stats.TotalMoveSpeed, 0, value.z * Stats.TotalMoveSpeed);
+        RigidBody.velocity = new Vector3(value.x * Stats.TotalMoveSpeed, RigidBody.velocity.y,
+            value.z * Stats.TotalMoveSpeed);
     }
 
     public void Shoot()
