@@ -1,0 +1,24 @@
+Disparadores
+Los disparadores se activan al pisar una placa de presión a la que están vinculados.
+La placa de presión se activa cuando uno pasa por encima de ella
+
+Trampa de Hielo
+Es una zona de niebla congelante que surge del suelo, ralentizando y dañando a quienquiera que pase por encima.
+Se activa regularmente cada determinado tiempo.
+
+Trampa de Fuego
+Es una nube de fuego que quema a quien pase por dentro, dejando prendidos fuego a quien pase por ella.
+Se activa regularmente cada determinado tiempo.
+
+proyectil solo atraviesa paredes cuando llega a X lvl (3?)
+
+Modifier categories
+Arco: Spread atkspd
+Flechas: pierce knockback
+stats: dmg hp spd
+
+buff/debuff temporales
+
+invulnerabilidad despues de recibir daño
+
+UI-Audio
