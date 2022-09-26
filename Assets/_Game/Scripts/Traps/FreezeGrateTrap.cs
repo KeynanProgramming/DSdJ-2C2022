@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Traps
 {
-    public class FireGrateTrap : MonoBehaviour
+    public class FreezeGrateTrap : MonoBehaviour
     {
-        [SerializeField] private float fireCloudStartDelay = 1;
-        [SerializeField] private float fireCloudStopDelay = 1;
-        [SerializeField] private int fireDamage = 1;
-        [SerializeField] private ParticleSystem fireCloudParticle;
+        [SerializeField] private float freezeCloudStartDelay = 1;
+        [SerializeField] private float freezeCloudStopDelay = 1;
+        [SerializeField] private int freezeDamage = 1;
+        [SerializeField] private ParticleSystem freezeCloudParticle;
 
         private float _currStartDelay;
         private float _currStopDelay;
@@ -22,56 +22,57 @@ namespace Traps
 
         private void Start()
         {
-            _damageTrigger.SetDamage(fireDamage);
+            _damageTrigger.SetDamage(freezeDamage);
             ResetTimers();
-            _currStartDelay = Random.Range(1f, fireCloudStartDelay);
+            _currStartDelay = Random.Range(1f, freezeCloudStartDelay);
             _countdownStart = true;
         }
 
         private void Update()
         {
-            FireCloudStartTimer();
-            FireCloudStopTimer();
+            FreezeCloudStartTimer();
+            FreezeCloudStopTimer();
             CheckParticles();
         }
 
-        private void FireCloudStartTimer()
+        private void FreezeCloudStartTimer()
         {
             if (!_countdownStart) return;
             if (_currStartDelay > 0) _currStartDelay -= Time.deltaTime;
-            if (_currStartDelay <= 0) StartFireCloud();
+            if (_currStartDelay <= 0) StartFreezeCloud();
         }
 
-        private void FireCloudStopTimer()
+        private void FreezeCloudStopTimer()
         {
             if (!_countdownStop) return;
             if (_currStopDelay > 0) _currStopDelay -= Time.deltaTime;
-            if (_currStopDelay <= 0) StopFireCloud();
+            if (_currStopDelay <= 0) StopFreezeCloud();
         }
 
-        private void StartFireCloud()
+        private void StartFreezeCloud()
         {
-            fireCloudParticle.Play(true);
+            freezeCloudParticle.Play(true);
             _damageTrigger.TurnCollisionOn();
             _countdownStart = false;
             _countdownStop = true;
         }
 
-        private void StopFireCloud()
+        private void StopFreezeCloud()
         {
-            fireCloudParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            freezeCloudParticle.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         }
 
         private void ResetTimers()
         {
-            _currStartDelay = fireCloudStartDelay;
-            _currStopDelay = fireCloudStopDelay;
+            _currStartDelay = freezeCloudStartDelay;
+            _currStopDelay = freezeCloudStopDelay;
         }
+
 
         private void CheckParticles()
         {
             if (!_countdownStop) return;
-            if (fireCloudParticle.isEmitting) return;
+            if (freezeCloudParticle.isEmitting) return;
             _damageTrigger.TurnCollisionOff();
             _countdownStop = false;
             ResetTimers();

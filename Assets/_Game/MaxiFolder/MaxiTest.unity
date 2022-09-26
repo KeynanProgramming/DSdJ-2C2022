@@ -1374,7 +1374,7 @@ PrefabInstance:
     - target: {fileID: 2324849776843746528, guid: b6a29deb6269bd744a596ad8bef1c5e4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.25
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2324849776843746528, guid: b6a29deb6269bd744a596ad8bef1c5e4,
         type: 3}
@@ -1384,7 +1384,7 @@ PrefabInstance:
     - target: {fileID: 2324849776843746528, guid: b6a29deb6269bd744a596ad8bef1c5e4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 2324849776843746528, guid: b6a29deb6269bd744a596ad8bef1c5e4,
         type: 3}
@@ -1510,6 +1510,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a9a391697d683648afe1bf55c5ec032, type: 3}
+--- !u!1001 &4497758804313942397
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7451001262297434003, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_Name
+      value: FreezeGrateTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451001262297625267, guid: 1c65a953bf2468d478f3e80fd8cd02f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c65a953bf2468d478f3e80fd8cd02f1, type: 3}
 --- !u!1001 &8478570185581134888
 PrefabInstance:
   m_ObjectHideFlags: 0
