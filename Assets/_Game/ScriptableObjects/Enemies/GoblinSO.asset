@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784ce74b49c048309dc0fdfa865cd4f8, type: 3}
   m_Name: GoblinSO
   m_EditorClassIdentifier: 
-  maxLife: 0
-  speed: 0
-  damage: 0
+  maxLife: 1
+  speed: 4
+  damage: 1
