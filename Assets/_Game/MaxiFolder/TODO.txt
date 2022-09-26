@@ -1,7 +1,3 @@
-Disparadores
-Los disparadores se activan al pisar una placa de presión a la que están vinculados.
-La placa de presión se activa cuando uno pasa por encima de ella
-
 Trampa de Hielo
 Es una zona de niebla congelante que surge del suelo, ralentizando y dañando a quienquiera que pase por encima.
 Se activa regularmente cada determinado tiempo.
@@ -11,10 +7,11 @@ Es una nube de fuego que quema a quien pase por dentro, dejando prendidos fuego 
 Se activa regularmente cada determinado tiempo.
 
 proyectil solo atraviesa paredes cuando llega a X lvl (3?)
+proyectil se le puede modificar la velocidad en spawn
 
 Modifier categories
-Arco: Spread atkspd
-Flechas: pierce knockback
+Arco: Spread atkspd AoE
+Flechas: pierce knockback freeze
 stats: dmg hp spd
 
 buff/debuff temporales

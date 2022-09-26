@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7dd23c673673741a00518d58915327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   lifespan: 5
   sphereSolid: {fileID: 2704054205615905517}
 --- !u!54 &-4165404875571337413
@@ -231,6 +231,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198018835103457376, guid: 0e8263b55ce10324ea322a63f7efc1f7,
         type: 3}
+      propertyPath: lengthInSec
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198018835103457376, guid: 0e8263b55ce10324ea322a63f7efc1f7,
+        type: 3}
       propertyPath: ShapeModule.type
       value: 4
       objectReference: {fileID: 0}
@@ -281,8 +286,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198018835103457376, guid: 0e8263b55ce10324ea322a63f7efc1f7,
         type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198018835103457376, guid: 0e8263b55ce10324ea322a63f7efc1f7,
+        type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198018835103457376, guid: 0e8263b55ce10324ea322a63f7efc1f7,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 198018835103457376, guid: 0e8263b55ce10324ea322a63f7efc1f7,
         type: 3}

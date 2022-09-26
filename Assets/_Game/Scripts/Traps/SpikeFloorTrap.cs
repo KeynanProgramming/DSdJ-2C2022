@@ -85,7 +85,7 @@ namespace Traps
 
         private void OnTriggerEnter(Collider other)
         {
-            _countRaise = true;
+            if (!_countDown && !_countRaise) _countRaise = true;
         }
 
         private void OnTriggerStay(Collider other)
