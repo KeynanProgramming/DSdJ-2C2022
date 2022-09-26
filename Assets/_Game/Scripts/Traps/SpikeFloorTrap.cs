@@ -66,7 +66,6 @@ namespace Traps
         {
             _countDown = false;
             ResetTimers();
-            _damageTrigger.TurnCollisionOn();
         }
 
         private void DownTimer()

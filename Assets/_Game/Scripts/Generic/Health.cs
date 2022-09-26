@@ -36,11 +36,12 @@ public class Health : MonoBehaviour
             OnGained?.Invoke();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, float time = 0f)
     {
         if (IsDead || IsInvulnerable) return;
         var healthBefore = CurrentHealth;
         CurrentHealth -= damage;
+        SetInvulnerable(time);
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
 
         // call OnDamage action
@@ -69,8 +70,9 @@ public class Health : MonoBehaviour
         IsInvulnerable = false;
     }
 
-    public void SetInvulnerable(float time)
+    private void SetInvulnerable(float time)
     {
+        if (!(time > 0)) return;
         IsInvulnerable = true;
         Invoke(nameof(UnsetInvulnerable), time);
     }

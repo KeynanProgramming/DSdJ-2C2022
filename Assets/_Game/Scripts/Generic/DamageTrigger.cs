@@ -6,12 +6,16 @@ public class DamageTrigger : MonoBehaviour
 {
     [SerializeField] private Collider triggerCollider;
 
-    private int _damage;
+    [Header("Damage over time")] [Space(5)] [SerializeField]
+    private bool canDamageOverTime;
 
-    private void Awake()
-    {
-        triggerCollider = GetComponent<Collider>();
-    }
+    [SerializeField] private float dotInterval = 1;
+
+    private const float INVULNERABILITY_TIME = 0.1f;
+
+    private int _damage;
+    private float _currDotInterval;
+    private bool _dotCooldown;
 
     public void TurnCollisionOn()
     {
@@ -30,9 +34,39 @@ public class DamageTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var hp = other.gameObject.GetComponent<Health>();
-        if (hp == null) return;
-        hp.TakeDamage(_damage);
-        TurnCollisionOff();
+        if (canDamageOverTime) return;
+        var entity = other.gameObject;
+        if (!HasHealth(entity)) return;
+        HealthDamage(entity);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        var entity = other.gameObject;
+        if (!HasHealth(entity)) return;
+        if (!canDamageOverTime) return;
+        if (_dotCooldown)
+        {
+            HealthDamage(entity);
+            _dotCooldown = false;
+        }
+        else
+        {
+            if (_currDotInterval > 0) _currDotInterval -= Time.deltaTime;
+            if (!(_currDotInterval <= 0)) return;
+            _dotCooldown = true;
+            _currDotInterval = dotInterval;
+        }
+    }
+
+    private void HealthDamage(GameObject other)
+    {
+        var hp = other.GetComponent<Health>();
+        hp.TakeDamage(_damage, INVULNERABILITY_TIME);
+    }
+
+    private bool HasHealth(GameObject go)
+    {
+        return go.GetComponent<Health>() != null;
     }
 }

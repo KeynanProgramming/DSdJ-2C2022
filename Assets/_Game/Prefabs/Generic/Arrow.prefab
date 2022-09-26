@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7dd23c673673741a00518d58915327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  lifespan: 5
+  moveSpeed: 15
+  lifespan: 3
   sphereSolid: {fileID: 2704054205615905517}
 --- !u!54 &-4165404875571337413
 Rigidbody:
