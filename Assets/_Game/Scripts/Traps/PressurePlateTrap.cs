@@ -4,12 +4,20 @@ namespace Traps
 {
     public class PressurePlateTrap : MonoBehaviour
     {
-        [Header("Stats")] [Space(5)] [SerializeField]
+        [Header("Trap Stats")] [Space(5)] [SerializeField]
         private float shootDelay = 1;
 
-        [SerializeField] private int projectileDamage = 1;
-        [SerializeField] private int projectilePierce = 1;
-        [SerializeField] private float projectileKnockBack = 1;
+        [Header("Projectile Stats")] [Space(5)] [SerializeField]
+        private int damage = 1;
+
+        [SerializeField] private int pierce = 1;
+        [SerializeField] private float knockBack = 1;
+
+        [SerializeField] [Tooltip("0 for Default")]
+        private float moveSpeed;
+
+        [SerializeField] [Tooltip("0 for Default")]
+        private float duration;
 
         [Header("References")] [Space(5)] [SerializeField]
         private Transform shootingPoint;
@@ -39,7 +47,8 @@ namespace Traps
         private void ShootProjectile()
         {
             var go = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
-            go.StatSetup(projectileDamage, projectilePierce, projectileKnockBack);
+            go.StatSetup(damage, pierce, knockBack, moveSpeed,
+                duration);
             go.transform.forward = transform.forward;
             ResetTimer();
         }
