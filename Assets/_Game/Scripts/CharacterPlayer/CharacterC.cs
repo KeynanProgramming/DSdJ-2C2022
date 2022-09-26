@@ -30,7 +30,7 @@ public class CharacterC : MonoBehaviour
 
     private void Start()
     {
-        CharacterM.Health.OnConsumed += () => print(CharacterM.Health.CurrentHealth);
+        CharacterM.Health.OnConsumed += () => print($"Player HP: {CharacterM.Health.CurrentHealth}");
     }
 
     private void Update()

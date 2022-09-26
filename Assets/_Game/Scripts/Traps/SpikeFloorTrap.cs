@@ -66,7 +66,6 @@ namespace Traps
         {
             _countDown = false;
             ResetTimers();
-            _damageTrigger.TurnCollisionOn();
         }
 
         private void DownTimer()
@@ -85,7 +84,7 @@ namespace Traps
 
         private void OnTriggerEnter(Collider other)
         {
-            _countRaise = true;
+            if (!_countDown && !_countRaise) _countRaise = true;
         }
 
         private void OnTriggerStay(Collider other)
