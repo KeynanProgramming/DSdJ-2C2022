@@ -18,6 +18,11 @@ public class GenericStatModifier : Interactable
     [SerializeField] [Tooltip("Modify only the correct one")]
     private float modifierFloatValue = float.MinValue;
 
+    [Header("Temporal Values")] [Space(5)] [SerializeField]
+    private bool isTemporal;
+
+    [SerializeField] private float duration;
+
     private void Start()
     {
         InteractableName = modifierName;
@@ -25,7 +30,8 @@ public class GenericStatModifier : Interactable
 
     public override void Interaction()
     {
-        Character.CharacterM.NewCharacterStats.ChangeModifier(stat, isBuff, modifierIntValue, modifierFloatValue);
-        Destroy(gameObject, 0.1f);
+        Character.CharacterM.NewCharacterStats.ChangeModifier(stat, isBuff, modifierIntValue,
+            modifierFloatValue, isTemporal, duration);
+        //Destroy(gameObject, 0.1f);
     }
 }

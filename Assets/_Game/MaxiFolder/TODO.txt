@@ -9,6 +9,4 @@ Arco: Spread atkspd AoE
 Flechas: pierce knockback freeze
 stats: dmg hp spd
 
-buff/debuff temporales
-
 UI-Audio

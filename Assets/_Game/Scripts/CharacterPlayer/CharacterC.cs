@@ -71,7 +71,7 @@ public class CharacterC : MonoBehaviour
 
     private void CharacterInteractionUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.F) && IsInInteractRange)
+        if (Input.GetKeyDown(KeyCode.V) && IsInInteractRange)
         {
             if (Interactable == null) return;
             OnCharacterInteract?.Invoke();
