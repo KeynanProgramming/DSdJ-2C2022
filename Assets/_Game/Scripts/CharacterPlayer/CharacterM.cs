@@ -22,7 +22,6 @@ public class CharacterM : MonoBehaviour
         RigidBody = GetComponent<Rigidbody>();
         Stats = GetComponent<CharacterStats>();
         Health = GetComponent<Health>();
-        NewCharacterStats = GetComponent<NewCharacterStats>();
     }
 
     private void Start()
@@ -84,6 +83,4 @@ public class CharacterM : MonoBehaviour
     {
         interactable.Interaction();
     }
-
-    public NewCharacterStats NewCharacterStats { get; private set; }
 }

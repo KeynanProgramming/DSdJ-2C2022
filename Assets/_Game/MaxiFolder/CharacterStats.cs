@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewCharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour
 {
     [SerializeField] private CharacterStatsSO baseCharacterStats;
 
@@ -31,7 +30,6 @@ public class NewCharacterStats : MonoBehaviour
 
     #endregion
 
-    // Total Base+Buff-Debuff
     public int MaxHealth => CalculateTotalMaxHealth();
     public int TotalSimultaneousArrows => CalculateTotalSpread();
     public int TotalAttackDamage => CalculateTotalDamage();
@@ -82,7 +80,7 @@ public class NewCharacterStats : MonoBehaviour
     {
         var buffs = floatDictionaryBuffs[StatNames.FireRateF] + floatDictionaryTempBuffs[StatNames.FireRateF];
         var deBuffs = floatDictionaryDeBuffs[StatNames.FireRateF] + floatDictionaryTempDeBuffs[StatNames.FireRateF];
-        var minValue = Mathf.Max(baseCharacterStats.FireRate + buffs - deBuffs, MIN_FIRE_RATE);
+        var minValue = Mathf.Max(baseCharacterStats.FireRate - buffs + deBuffs, MIN_FIRE_RATE);
         return Mathf.Min(minValue, 999);
     }
 
@@ -107,14 +105,12 @@ public class NewCharacterStats : MonoBehaviour
     {
         var originalFloat = baseCharacterStats.FloatStatsDic;
         var originalInt = baseCharacterStats.IntStatDic;
-        CopyDictionaryFloat(originalFloat, floatDictionaryBuffs);
-        CopyDictionaryFloat(originalFloat, floatDictionaryTempBuffs);
-        CopyDictionaryFloat(originalFloat, floatDictionaryDeBuffs);
-        CopyDictionaryFloat(originalFloat, floatDictionaryTempDeBuffs);
-        CopyDictionaryInt(originalInt, intDictionaryBuffs);
-        CopyDictionaryInt(originalInt, intDictionaryTempBuffs);
-        CopyDictionaryInt(originalInt, intDictionaryDeBuffs);
-        CopyDictionaryInt(originalInt, intDictionaryTempDeBuffs);
+        var floatDicList = new List<StatFloatDictionary>
+            { floatDictionaryBuffs, floatDictionaryDeBuffs, floatDictionaryTempBuffs, floatDictionaryTempDeBuffs };
+        var intDicList = new List<StatIntDictionary>
+            { intDictionaryBuffs, intDictionaryDeBuffs, intDictionaryTempBuffs, intDictionaryTempDeBuffs };
+        foreach (var fDic in floatDicList) CopyDictionaryFloat(originalFloat, fDic);
+        foreach (var iDic in intDicList) CopyDictionaryInt(originalInt, iDic);
     }
 
     public void ChangeModifier(StatNames stat, bool isBuff, int intValue = int.MinValue,

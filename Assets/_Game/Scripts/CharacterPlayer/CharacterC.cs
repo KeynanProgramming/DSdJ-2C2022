@@ -58,7 +58,7 @@ public class CharacterC : MonoBehaviour
             if (Input.GetButton("Fire1"))
             {
                 CharacterM.Shoot();
-                _firingInterval = CharacterM.Stats.TotalAttackSpeed;
+                _firingInterval = CharacterM.Stats.TotalFireRate;
             }
     }
 

@@ -30,8 +30,8 @@ public class GenericStatModifier : Interactable
 
     public override void Interaction()
     {
-        Character.CharacterM.NewCharacterStats.ChangeModifier(stat, isBuff, modifierIntValue,
+        Character.CharacterM.Stats.ChangeModifier(stat, isBuff, modifierIntValue,
             modifierFloatValue, isTemporal, duration);
-        //Destroy(gameObject, 0.1f);
+        Destroy(gameObject, 0.1f);
     }
 }

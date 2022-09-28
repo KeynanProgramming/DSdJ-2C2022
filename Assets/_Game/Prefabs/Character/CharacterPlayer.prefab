@@ -1590,9 +1590,9 @@ GameObject:
   - component: {fileID: 8478570185576491775}
   - component: {fileID: 8478570185576491774}
   - component: {fileID: 8478570185576491773}
-  - component: {fileID: 8478570185576491764}
   - component: {fileID: 6244460207300483484}
   - component: {fileID: 7650979803310868317}
+  - component: {fileID: 1988413399}
   m_Layer: 0
   m_Name: CharacterPlayer
   m_TagString: Player
@@ -1664,25 +1664,6 @@ MonoBehaviour:
   firePoint: {fileID: 8478570185315648645}
   projectilePrefab: {fileID: 2047663201941841340, guid: ef45b668a597e074a81d8faf1a4fcb4c,
     type: 3}
---- !u!114 &8478570185576491764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8478570185576491772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70f90d542734aa14bbf178f7e7500c71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  simultaneousArrows: 1
-  attackDamage: 1
-  attackPierce: 1
-  attackSpeed: 1
-  attackKnockBack: 1
-  moveSpeed: 5
 --- !u!114 &6244460207300483484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1695,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c30c95745291949b73d754aa30339d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 0
 --- !u!136 &7650979803310868317
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1710,6 +1691,111 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &1988413399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478570185576491772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa0426dd1458b243b70ed1ef24b1a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseCharacterStats: {fileID: 11400000, guid: 1de386cae4e875544bbef6333c6382e4, type: 2}
+  floatDictionaryBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values:
+    - 0
+    - 0
+    - 0
+  floatDictionaryDeBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values:
+    - 0
+    - 0
+    - 0
+  floatDictionaryTempBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values:
+    - 0
+    - 0
+    - 0
+  floatDictionaryTempDeBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values:
+    - 0
+    - 0
+    - 0
+  intDictionaryBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values: 000000000000000000000000
+  intDictionaryDeBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values: 000000000000000000000000
+  intDictionaryTempBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values: 000000000000000000000000
+  intDictionaryTempDeBuffs:
+    _Buckets: ffffffffffffffffffffffff
+    _HashCodes: 000000000000000000000000
+    _Next: 000000000000000000000000
+    _Count: 0
+    _Version: 0
+    _FreeList: -1
+    _FreeCount: 0
+    _Keys: 000000000000000000000000
+    _Values: 000000000000000000000000
 --- !u!1 &8618280738358079098
 GameObject:
   m_ObjectHideFlags: 0
