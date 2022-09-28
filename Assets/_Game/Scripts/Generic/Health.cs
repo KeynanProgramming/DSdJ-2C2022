@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] [Tooltip("Maximum amount of health")]
     private int maxHealth = 100;
+
+    private Coroutine _dotCoroutine;
 
     public event Action OnConsumed;
     public event Action OnGained;
@@ -102,5 +105,30 @@ public class Health : MonoBehaviour
         maxHealth = amount;
         BaseMaxHealth = amount;
         ResetToMax();
+    }
+
+    private IEnumerator DamageOverTimeCor(float duration, float interval, int damage)
+    {
+        var currT = 0f;
+        var totalT = 0f;
+        while (totalT < duration)
+        {
+            while (currT < interval)
+            {
+                currT += Time.deltaTime;
+                totalT += Time.deltaTime;
+                yield return null;
+            }
+
+            currT = 0;
+            TakeDamage(damage);
+            yield return null;
+        }
+    }
+
+    public void DealDamageOvertime(float duration, float interval, int damage)
+    {
+        if (_dotCoroutine != null) StopCoroutine(_dotCoroutine);
+        _dotCoroutine = StartCoroutine(DamageOverTimeCor(duration, interval, damage));
     }
 }

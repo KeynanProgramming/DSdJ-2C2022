@@ -4,10 +4,22 @@ namespace Traps
 {
     public class FireGrateTrap : MonoBehaviour
     {
-        [SerializeField] private float fireCloudStartDelay = 1;
+        [SerializeField] private ParticleSystem fireCloudParticle;
+
+        [Header("Cloud Stats")] [Space(5)] [SerializeField]
+        private float fireCloudStartDelay = 1;
+
         [SerializeField] private float fireCloudStopDelay = 1;
         [SerializeField] private int fireDamage = 1;
-        [SerializeField] private ParticleSystem fireCloudParticle;
+
+        [Header("Debuff Stats")]
+        [Space(5)]
+        [SerializeField]
+        [Tooltip("Total damage = damage*(duration/interval){rounded up}")]
+        private int deBuffDamage = 1;
+
+        [SerializeField] private float deBuffDuration = 1;
+        [SerializeField] private float deBuffInterval = 1;
 
         private float _currStartDelay;
         private float _currStopDelay;
@@ -76,6 +88,13 @@ namespace Traps
             _countdownStop = false;
             ResetTimers();
             _countdownStart = true;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            var hp = other.gameObject.GetComponent<Health>();
+            if (hp != null)
+                hp.DealDamageOvertime(deBuffDuration, deBuffInterval, deBuffDamage);
         }
     }
 }

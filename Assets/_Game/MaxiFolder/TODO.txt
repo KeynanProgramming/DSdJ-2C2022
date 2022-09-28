@@ -8,3 +8,6 @@ Flechas: pierce knockback freeze
 stats: dmg hp spd
 
 UI-Audio
+
+CharacterStats L126 hay un else que creo no deberia estar, pero aun asi no rompe nada asi que no se ¯\_(ツ)_/¯
+si se rompe alguna interaccion de multiples buffs/debuffs checkear
