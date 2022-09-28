@@ -3,13 +3,15 @@
 public enum InteractionType
 {
     None,
-    Spread,
-    Damage,
-    Pierce,
-    AtkSpeed,
-    KnockBack,
-    MoveSpeed,
-    MaxHealth
+    SpreadI,
+    FireRateF,
+    VolleyF,
+    PierceI,
+    KnockBackF,
+    DisruptionF,
+    DamageI,
+    MaxHealthI,
+    MoveSpeedF
 }
 
 [RequireComponent(typeof(SphereCollider))]
