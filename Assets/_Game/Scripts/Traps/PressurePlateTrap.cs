@@ -12,6 +12,8 @@ namespace Traps
 
         [SerializeField] private int pierce = 1;
         [SerializeField] private float knockBack = 1;
+        [SerializeField] private float disruption;
+        [SerializeField] private float disruptionDuration;
 
         [SerializeField] [Tooltip("0 for Default")]
         private float moveSpeed;
@@ -47,7 +49,7 @@ namespace Traps
         private void ShootProjectile()
         {
             var go = Instantiate(projectilePrefab, shootingPoint.position, Quaternion.identity);
-            go.StatSetup(damage, pierce, knockBack, moveSpeed,
+            go.StatSetup(damage, pierce, knockBack, disruption, disruptionDuration, moveSpeed,
                 duration);
             go.transform.forward = transform.forward;
             ResetTimer();

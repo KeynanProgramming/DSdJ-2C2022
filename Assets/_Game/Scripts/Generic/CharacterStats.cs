@@ -29,6 +29,8 @@ public class CharacterStats : MonoBehaviour
     private const float MIN_FIRE_RATE = 0.1f;
     private const float MIN_KNOCK_BACK = 0f;
     private const float MIN_MOVE_SPEED = 0f;
+    private const float MIN_DISRUPTION = 0f;
+    private const float MIN_VOLLEY_AREA = 0f;
 
     #endregion
 
@@ -39,6 +41,8 @@ public class CharacterStats : MonoBehaviour
     public float TotalFireRate => CalculateTotalFireRate();
     public float TotalAttackKnockBack => CalculateTotalKnockBack();
     public float TotalMoveSpeed => CalculateTotalMoveSpeed();
+    public float TotalDisruption => CalculateTotalDisruption();
+    public float TotalVolleyArea => CalculateTotalVolleyArea();
 
     private void Start()
     {
@@ -99,6 +103,22 @@ public class CharacterStats : MonoBehaviour
         var buffs = floatDictionaryBuffs[StatNames.MoveSpeedF] + floatDictionaryTempBuffs[StatNames.MoveSpeedF];
         var deBuffs = floatDictionaryDeBuffs[StatNames.MoveSpeedF] + floatDictionaryTempDeBuffs[StatNames.MoveSpeedF];
         var minValue = Mathf.Max(baseCharacterStats.MoveSpeed + buffs - deBuffs, MIN_MOVE_SPEED);
+        return Mathf.Min(minValue, 20);
+    }
+
+    private float CalculateTotalDisruption()
+    {
+        var buffs = floatDictionaryBuffs[StatNames.DisruptionF] + floatDictionaryTempBuffs[StatNames.DisruptionF];
+        var deBuffs = floatDictionaryDeBuffs[StatNames.DisruptionF] + floatDictionaryTempDeBuffs[StatNames.DisruptionF];
+        var minValue = Mathf.Max(baseCharacterStats.Disruption + buffs - deBuffs, MIN_DISRUPTION);
+        return Mathf.Min(minValue, 20);
+    }
+
+    private float CalculateTotalVolleyArea()
+    {
+        var buffs = floatDictionaryBuffs[StatNames.VolleyAreaF] + floatDictionaryTempBuffs[StatNames.VolleyAreaF];
+        var deBuffs = floatDictionaryDeBuffs[StatNames.VolleyAreaF] + floatDictionaryTempDeBuffs[StatNames.VolleyAreaF];
+        var minValue = Mathf.Max(baseCharacterStats.Volley + buffs - deBuffs, MIN_VOLLEY_AREA);
         return Mathf.Min(minValue, 20);
     }
 

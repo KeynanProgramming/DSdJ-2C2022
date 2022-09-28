@@ -14,7 +14,7 @@ public class CharacterStatsSO : ScriptableObject
     [SerializeField] private StatFloatDictionary floatStats = new StatFloatDictionary()
     {
         { StatNames.FireRateF, 1 },
-        { StatNames.VolleyF, 1 },
+        { StatNames.VolleyAreaF, 1 },
         { StatNames.KnockBackF, 1 },
         { StatNames.DisruptionF, 1 },
         { StatNames.MoveSpeedF, 1 }
@@ -27,7 +27,7 @@ public class CharacterStatsSO : ScriptableObject
     public int Damage => intStats[StatNames.DamageI];
     public int MaxHealth => intStats[StatNames.MaxHealthI];
     public float FireRate => floatStats[StatNames.FireRateF];
-    public float Volley => floatStats[StatNames.VolleyF];
+    public float Volley => floatStats[StatNames.VolleyAreaF];
     public float KnockBack => floatStats[StatNames.KnockBackF];
     public float Disruption => floatStats[StatNames.DisruptionF];
     public float MoveSpeed => floatStats[StatNames.MoveSpeedF];
@@ -37,7 +37,7 @@ public class CharacterStatsSO : ScriptableObject
     {
         intStats.Add(StatNames.SpreadI, 1);
         floatStats.Add(StatNames.FireRateF, 1);
-        floatStats.Add(StatNames.VolleyF, 1);
+        floatStats.Add(StatNames.VolleyAreaF, 1);
         intStats.Add(StatNames.PierceI, 1);
         floatStats.Add(StatNames.KnockBackF, 1);
         floatStats.Add(StatNames.DisruptionF, 1);

@@ -9,12 +9,18 @@ public class Projectile : MonoBehaviour
     public int Damage { get; private set; }
     public int Pierce { get; private set; }
     public float KnockBack { get; private set; }
+    public float Disruption { get; private set; }
+    public float DisruptionDuration { get; private set; }
 
-    public void StatSetup(int damage, int pierce, float knockBack, float speed = 0, float life = 0)
+    public void StatSetup(int damage, int pierce, float knockBack, float disruption = 0, float disruptionDuration = 0,
+        float speed = 0,
+        float life = 0)
     {
         Damage = damage;
         Pierce = pierce;
         KnockBack = knockBack;
+        Disruption = disruption;
+        DisruptionDuration = disruptionDuration;
         if (speed != 0) moveSpeed = speed;
         if (life != 0) lifespan = life;
     }
@@ -32,13 +38,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Health>())
-        {
-            var go = other.gameObject.GetComponent<Health>();
-            go.TakeDamage(Damage);
-            Pierce--;
-            if (Pierce <= 0) Destroy(gameObject);
-        }
+        var hp = other.gameObject.GetComponent<Health>();
+        var charStats = other.gameObject.GetComponent<CharacterStats>();
+        if (charStats != null)
+            charStats.ChangeModifier(StatNames.MoveSpeedF, false, default, Disruption, true, DisruptionDuration);
+        if (hp == null) return;
+        hp.TakeDamage(Damage);
+        Pierce--;
+        if (Pierce <= 0) Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

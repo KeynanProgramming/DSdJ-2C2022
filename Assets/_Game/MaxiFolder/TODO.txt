@@ -1,6 +1,6 @@
-Trampa de Fuego dejar debuff que hace x daño por segundo durante x segundos
-
 proyectil solo atraviesa paredes cuando llega a X lvl (3?)
+
+hacer flechas que caen en un area alrededor del mouse
 
 Modifier categories
 Arco: Spread atkspd AoE
@@ -9,5 +9,10 @@ stats: dmg hp spd
 
 UI-Audio
 
+Notas---
+
 CharacterStats L126 hay un else que creo no deberia estar, pero aun asi no rompe nada asi que no se ¯\_(ツ)_/¯
 si se rompe alguna interaccion de multiples buffs/debuffs checkear
+
+projetile L63 tiene on trigger exit para poner en enabled el collider, quizas se rompe si el objeto que atraviesa muere en proceso de atravesarlo
+si pasa esto hay que hacer algun cambio para no usar ontriggerexit

@@ -4,7 +4,7 @@ public enum StatNames
 {
     SpreadI,
     FireRateF,
-    VolleyF,
+    VolleyAreaF,
     PierceI,
     KnockBackF,
     DisruptionF,
