@@ -38,36 +38,46 @@ public class CharacterM : MonoBehaviour
 
     public void Shoot()
     {
-        switch (Stats.TotalSimultaneousArrows)
+        CheckSpread();
+    }
+
+    private void CheckSpread()
+    {
+        var mod = 0f;
+        if (Stats.TotalSpread % 2 == 0)
         {
-            case 1:
-                ProjectileSpawn(0f);
-                break;
-            case 2:
-                ProjectileSpawn(-10f);
-                ProjectileSpawn(10f);
-                break;
-            case 3:
-                ProjectileSpawn(-10f);
-                ProjectileSpawn(0f);
-                ProjectileSpawn(10f);
-                break;
-            case 4:
-                ProjectileSpawn(-20f);
-                ProjectileSpawn(-10f);
-                ProjectileSpawn(10f);
-                ProjectileSpawn(20f);
-                break;
-            case 5:
-                ProjectileSpawn(-20f);
-                ProjectileSpawn(-10f);
-                ProjectileSpawn(0f);
-                ProjectileSpawn(10f);
-                ProjectileSpawn(20f);
-                break;
-            default:
-                ProjectileSpawn(0f);
-                break;
+            mod += 2;
+            for (var i = 0; i < Stats.TotalSpread; i++)
+            {
+                switch (i % 2)
+                {
+                    case 0:
+                        ProjectileSpawn(mod);
+                        continue;
+                    case 1:
+                        ProjectileSpawn(-mod);
+                        break;
+                }
+
+                mod += 2;
+            }
+        }
+        else
+        {
+            for (var i = 0; i < Stats.TotalSpread; i++)
+            {
+                switch (i % 2)
+                {
+                    case 1:
+                        ProjectileSpawn(-mod);
+                        continue;
+                    case 0:
+                        ProjectileSpawn(mod);
+                        break;
+                }
+
+                mod += 2;
+            }
         }
     }
 
@@ -75,7 +85,7 @@ public class CharacterM : MonoBehaviour
     {
         var go = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         var projectile = go.GetComponent<Projectile>();
-        projectile.StatSetup(Stats.TotalAttackDamage, Stats.TotalAttackPierce, Stats.TotalAttackKnockBack);
+        projectile.StatSetup(Stats.TotalDamage, Stats.TotalPierce, Stats.TotalKnockBack);
         projectile.transform.forward = Quaternion.Euler(0f, angle, 0f) * transform.forward;
     }
 

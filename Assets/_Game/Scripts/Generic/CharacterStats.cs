@@ -35,11 +35,11 @@ public class CharacterStats : MonoBehaviour
     #endregion
 
     public int MaxHealth => CalculateTotalMaxHealth();
-    public int TotalSimultaneousArrows => CalculateTotalSpread();
-    public int TotalAttackDamage => CalculateTotalDamage();
-    public int TotalAttackPierce => CalculateTotalPierce();
+    public int TotalSpread => CalculateTotalSpread();
+    public int TotalDamage => CalculateTotalDamage();
+    public int TotalPierce => CalculateTotalPierce();
     public float TotalFireRate => CalculateTotalFireRate();
-    public float TotalAttackKnockBack => CalculateTotalKnockBack();
+    public float TotalKnockBack => CalculateTotalKnockBack();
     public float TotalMoveSpeed => CalculateTotalMoveSpeed();
     public float TotalDisruption => CalculateTotalDisruption();
     public float TotalVolleyArea => CalculateTotalVolleyArea();
@@ -63,7 +63,7 @@ public class CharacterStats : MonoBehaviour
         var buffs = intDictionaryBuffs[StatNames.SpreadI] + intDictionaryTempBuffs[StatNames.SpreadI];
         var deBuffs = intDictionaryDeBuffs[StatNames.SpreadI] + intDictionaryTempDeBuffs[StatNames.SpreadI];
         var minValue = Mathf.Max(baseCharacterStats.Spread + buffs - deBuffs, MIN_SPREAD);
-        return Mathf.Min(minValue, 5);
+        return Mathf.Min(minValue, 30);
     }
 
     private int CalculateTotalDamage()
