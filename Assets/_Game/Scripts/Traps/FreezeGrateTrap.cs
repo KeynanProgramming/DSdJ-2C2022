@@ -1,13 +1,22 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Traps
 {
     public class FreezeGrateTrap : MonoBehaviour
     {
-        [SerializeField] private float freezeCloudStartDelay = 1;
+        [SerializeField] private ParticleSystem freezeCloudParticle;
+
+        [Header("Cloud Stats")] [Space(5)] [SerializeField]
+        private float freezeCloudStartDelay = 1;
+
         [SerializeField] private float freezeCloudStopDelay = 1;
         [SerializeField] private int freezeDamage = 1;
-        [SerializeField] private ParticleSystem freezeCloudParticle;
+
+        [Header("Move Speed Debuff Stats")] [Space(5)] [SerializeField]
+        private float deBuffModifier = 1;
+
+        [SerializeField] private float deBuffDuration = 1;
 
         private float _currStartDelay;
         private float _currStopDelay;
@@ -77,6 +86,13 @@ namespace Traps
             _countdownStop = false;
             ResetTimers();
             _countdownStart = true;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            var charStats = other.gameObject.GetComponent<CharacterStats>();
+            if (charStats != null)
+                charStats.ChangeModifier(StatNames.MoveSpeedF, false, default, deBuffModifier, true, deBuffDuration);
         }
     }
 }

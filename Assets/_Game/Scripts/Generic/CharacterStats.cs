@@ -17,6 +17,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private StatIntDictionary intDictionaryTempBuffs = new StatIntDictionary();
     [SerializeField] private StatIntDictionary intDictionaryTempDeBuffs = new StatIntDictionary();
 
+    private Coroutine _modifierCoroutine;
+
     #region Min Total Variable Value
 
     // Min Variable Amounts
@@ -117,23 +119,42 @@ public class CharacterStats : MonoBehaviour
         float floatValue = float.MinValue, bool isTemporal = false, float tempDuration = 0f)
     {
         if (tempDuration > 0)
-            StartCoroutine(ModifierCountdown(tempDuration, stat, isBuff, intValue, floatValue, isTemporal));
+        {
+            if (_modifierCoroutine != null)
+                StopCoroutine(_modifierCoroutine);
+            else
+                StartCoroutine(ModifierCountdown(tempDuration, stat, isBuff, intValue, floatValue, isTemporal));
+        }
 
         if (isBuff)
         {
             if (intValue != int.MinValue)
-                AddIntToDictionaryKey(isTemporal ? intDictionaryTempBuffs : intDictionaryBuffs, stat, intValue);
+            {
+                if (isTemporal)
+                    IntToDictionaryKey(intDictionaryTempBuffs, stat, intValue);
+                else
+                    AddIntToDictionaryKey(intDictionaryBuffs, stat, intValue);
+            }
 
             if (!(floatValue > float.MinValue)) return;
-            AddFloatToDictionaryKey(isTemporal ? floatDictionaryTempBuffs : floatDictionaryBuffs, stat, floatValue);
+            if (isTemporal)
+                FloatToDictionaryKey(floatDictionaryTempBuffs, stat, floatValue);
+            else
+                AddFloatToDictionaryKey(floatDictionaryBuffs, stat, floatValue);
         }
         else
         {
             if (intValue != int.MinValue)
-                AddIntToDictionaryKey(isTemporal ? intDictionaryTempDeBuffs : intDictionaryDeBuffs, stat, intValue);
+                if (isTemporal)
+                    IntToDictionaryKey(intDictionaryTempDeBuffs, stat, intValue);
+                else
+                    AddIntToDictionaryKey(intDictionaryDeBuffs, stat, intValue);
 
             if (!(floatValue > float.MinValue)) return;
-            AddFloatToDictionaryKey(isTemporal ? floatDictionaryTempDeBuffs : floatDictionaryDeBuffs, stat, floatValue);
+            if (isTemporal)
+                FloatToDictionaryKey(floatDictionaryTempDeBuffs, stat, floatValue);
+            else
+                AddFloatToDictionaryKey(floatDictionaryDeBuffs, stat, floatValue);
         }
     }
 
@@ -147,8 +168,8 @@ public class CharacterStats : MonoBehaviour
             yield return null;
         }
 
-        var nInt = intValue == int.MinValue ? int.MinValue : intValue * -1;
-        var nFloat = floatValue > float.MinValue ? floatValue * -1 : float.MinValue;
+        var nInt = intValue == int.MinValue ? int.MinValue : 0;
+        var nFloat = floatValue > float.MinValue ? 0 : float.MinValue;
         ChangeModifier(stat, isBuff, nInt, nFloat, isTemporal);
     }
 
@@ -217,9 +238,21 @@ public class CharacterStats : MonoBehaviour
             intDictionary[key] += valueAdded;
     }
 
+    private void IntToDictionaryKey(StatIntDictionary intDictionary, StatNames key, int valueAdded)
+    {
+        if (intDictionary.ContainsKey(key))
+            intDictionary[key] = valueAdded;
+    }
+
     private void AddFloatToDictionaryKey(StatFloatDictionary floatDictionary, StatNames key, float valueAdded)
     {
         if (floatDictionary.ContainsKey(key))
             floatDictionary[key] += valueAdded;
+    }
+
+    private void FloatToDictionaryKey(StatFloatDictionary floatDictionary, StatNames key, float valueAdded)
+    {
+        if (floatDictionary.ContainsKey(key))
+            floatDictionary[key] = valueAdded;
     }
 }

@@ -1,5 +1,3 @@
-Trampa de Hielo dejar debuff que slowea durante x segundos
-
 Trampa de Fuego dejar debuff que hace x daño por segundo durante x segundos
 
 proyectil solo atraviesa paredes cuando llega a X lvl (3?)
