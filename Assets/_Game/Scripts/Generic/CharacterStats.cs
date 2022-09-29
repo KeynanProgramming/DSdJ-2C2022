@@ -43,6 +43,7 @@ public class CharacterStats : MonoBehaviour
     public float TotalMoveSpeed => CalculateTotalMoveSpeed();
     public float TotalDisruption => CalculateTotalDisruption();
     public float TotalVolleyArea => CalculateTotalVolleyArea();
+    public float DisruptionDuration => 1f;
 
     private void Start()
     {

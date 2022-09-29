@@ -85,7 +85,8 @@ public class CharacterM : MonoBehaviour
     {
         var go = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         var projectile = go.GetComponent<Projectile>();
-        projectile.StatSetup(Stats.TotalDamage, Stats.TotalPierce, Stats.TotalKnockBack);
+        projectile.StatSetup(Stats.TotalDamage, Stats.TotalPierce, Stats.TotalKnockBack, Stats.TotalDisruption,
+            Stats.DisruptionDuration);
         projectile.transform.forward = Quaternion.Euler(0f, angle, 0f) * transform.forward;
     }
 
