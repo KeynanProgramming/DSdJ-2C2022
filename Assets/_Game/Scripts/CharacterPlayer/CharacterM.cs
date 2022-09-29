@@ -39,7 +39,7 @@ public class CharacterM : MonoBehaviour
 
     public void Shoot()
     {
-        //CheckSpread();
+        CheckSpread();
         VolleySpawn();
     }
 
