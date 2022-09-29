@@ -6,6 +6,7 @@ public class CharacterM : MonoBehaviour
     [SerializeField] private LayerMask mouseColliderLayerMask;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private GameObject volleyPrefab;
 
     public Rigidbody RigidBody { get; private set; }
     public CharacterStats Stats { get; private set; }
@@ -38,7 +39,8 @@ public class CharacterM : MonoBehaviour
 
     public void Shoot()
     {
-        CheckSpread();
+        //CheckSpread();
+        VolleySpawn();
     }
 
     private void CheckSpread()
@@ -93,5 +95,12 @@ public class CharacterM : MonoBehaviour
     public void CharacterInteraction(Interactable interactable)
     {
         interactable.Interaction();
+    }
+
+    private void VolleySpawn()
+    {
+        var go = Instantiate(volleyPrefab, GetMouseWorldPosition(), Quaternion.identity);
+        var aoe = go.GetComponent<AreaOfEffect>();
+        aoe.Init(Stats.TotalVolleyArea, Stats.TotalDamage, Stats.VolleyDuration);
     }
 }

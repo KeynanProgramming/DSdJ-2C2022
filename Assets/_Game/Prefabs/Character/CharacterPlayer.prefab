@@ -1664,6 +1664,8 @@ MonoBehaviour:
   firePoint: {fileID: 8478570185315648645}
   projectilePrefab: {fileID: 2047663201941841340, guid: ef45b668a597e074a81d8faf1a4fcb4c,
     type: 3}
+  volleyPrefab: {fileID: 1084954552513834373, guid: 257fa0c0500d3eb49901c65f14ad3c4e,
+    type: 3}
 --- !u!114 &6244460207300483484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1705,97 +1707,113 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseCharacterStats: {fileID: 11400000, guid: 1de386cae4e875544bbef6333c6382e4, type: 2}
   floatDictionaryBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: ffffffff0400000001000000ffffffff0200000003000000ffffffff
+    _HashCodes: 01000000020000000400000005000000080000000000000000000000
+    _Next: ffffffffffffffffffffffffffffffff000000000000000000000000
+    _Count: 5
+    _Version: 5
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
+    _Keys: 01000000020000000400000005000000080000000000000000000000
     _Values:
-    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
     - 0
     - 0
   floatDictionaryDeBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: ffffffff0400000001000000ffffffff0200000003000000ffffffff
+    _HashCodes: 01000000020000000400000005000000080000000000000000000000
+    _Next: ffffffffffffffffffffffffffffffff000000000000000000000000
+    _Count: 5
+    _Version: 5
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
+    _Keys: 01000000020000000400000005000000080000000000000000000000
     _Values:
-    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
     - 0
     - 0
   floatDictionaryTempBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: ffffffff0400000001000000ffffffff0200000003000000ffffffff
+    _HashCodes: 01000000020000000400000005000000080000000000000000000000
+    _Next: ffffffffffffffffffffffffffffffff000000000000000000000000
+    _Count: 5
+    _Version: 5
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
+    _Keys: 01000000020000000400000005000000080000000000000000000000
     _Values:
-    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
     - 0
     - 0
   floatDictionaryTempDeBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: ffffffff0400000001000000ffffffff0200000003000000ffffffff
+    _HashCodes: 01000000020000000400000005000000080000000000000000000000
+    _Next: ffffffffffffffffffffffffffffffff000000000000000000000000
+    _Count: 5
+    _Version: 5
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
+    _Keys: 01000000020000000400000005000000080000000000000000000000
     _Values:
-    - 0
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
     - 0
     - 0
   intDictionaryBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: 03000000ffffffffffffffff01000000ffffffffffffffff02000000
+    _HashCodes: 00000000030000000600000007000000000000000000000000000000
+    _Next: ffffffffffffffffffffffff00000000000000000000000000000000
+    _Count: 4
+    _Version: 4
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
-    _Values: 000000000000000000000000
+    _Keys: 00000000030000000600000007000000000000000000000000000000
+    _Values: 01000000010000000100000001000000000000000000000000000000
   intDictionaryDeBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: 03000000ffffffffffffffff01000000ffffffffffffffff02000000
+    _HashCodes: 00000000030000000600000007000000000000000000000000000000
+    _Next: ffffffffffffffffffffffff00000000000000000000000000000000
+    _Count: 4
+    _Version: 4
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
-    _Values: 000000000000000000000000
+    _Keys: 00000000030000000600000007000000000000000000000000000000
+    _Values: 01000000010000000100000001000000000000000000000000000000
   intDictionaryTempBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: 03000000ffffffffffffffff01000000ffffffffffffffff02000000
+    _HashCodes: 00000000030000000600000007000000000000000000000000000000
+    _Next: ffffffffffffffffffffffff00000000000000000000000000000000
+    _Count: 4
+    _Version: 4
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
-    _Values: 000000000000000000000000
+    _Keys: 00000000030000000600000007000000000000000000000000000000
+    _Values: 01000000010000000100000001000000000000000000000000000000
   intDictionaryTempDeBuffs:
-    _Buckets: ffffffffffffffffffffffff
-    _HashCodes: 000000000000000000000000
-    _Next: 000000000000000000000000
-    _Count: 0
-    _Version: 0
+    _Buckets: 03000000ffffffffffffffff01000000ffffffffffffffff02000000
+    _HashCodes: 00000000030000000600000007000000000000000000000000000000
+    _Next: ffffffffffffffffffffffff00000000000000000000000000000000
+    _Count: 4
+    _Version: 4
     _FreeList: -1
     _FreeCount: 0
-    _Keys: 000000000000000000000000
-    _Values: 000000000000000000000000
+    _Keys: 00000000030000000600000007000000000000000000000000000000
+    _Values: 01000000010000000100000001000000000000000000000000000000
 --- !u!1 &8618280738358079098
 GameObject:
   m_ObjectHideFlags: 0

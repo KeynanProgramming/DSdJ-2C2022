@@ -1,7 +1,5 @@
 proyectil solo atraviesa paredes cuando llega a X lvl (3?)
 
-hacer flechas que caen en un area alrededor del mouse
-
 Modifier categories
 Arco: Spread atkspd AoE
 Flechas: pierce knockback freeze
