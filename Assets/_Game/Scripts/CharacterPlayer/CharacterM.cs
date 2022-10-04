@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CharacterM : MonoBehaviour, IVel
 {
-    [SerializeField] private Camera cameraObject;
+    private Camera cameraObject;
     [SerializeField] private LayerMask mouseColliderLayerMask;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
@@ -23,6 +23,7 @@ public class CharacterM : MonoBehaviour, IVel
 
     private void Awake()
     {
+        cameraObject = FindObjectOfType<Camera>();
         RigidBody = GetComponent<Rigidbody>();  
         Stats = GetComponent<CharacterStats>();
         Health = GetComponent<Health>();
