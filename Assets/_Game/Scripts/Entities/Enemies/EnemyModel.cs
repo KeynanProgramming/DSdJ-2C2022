@@ -1,43 +1,50 @@
-﻿using System;
-using UnityEngine;
- class EnemyModel : MonoBehaviour
- {
-     public EnemySO data;
-     public Rigidbody rb;
-     protected Transform _transform;
-     
-     private void Awake()
-     {
-         rb = GetComponent<Rigidbody>();
-         _transform = transform;
-     }
+﻿using UnityEngine;
 
-     public virtual void Idle()
-     {
-         rb.velocity = Vector3.zero;
-     }
-     
-     public virtual void Move(Vector3 dir)
-     {
-         rb.velocity = dir.normalized * data.speed;
-     }
+public class EnemyModel : MonoBehaviour
+{
+    public EnemySO data;
+    private Rigidbody _rb;
+    private Transform _transform;
+    [SerializeField] private LineOfSightAI _lineOfSightAI;
+    public LineOfSightAI LineOfSightAI => _lineOfSightAI;
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _transform = transform;
+    }
 
-     public virtual void LookAt(Vector3 dir)
-     {
-         _transform.forward = dir.normalized;
-     }
+    public void Subscribe(EnemyController controller)
+    {
+        controller.OnMove += Move;
+        controller.OnAttack += Attack;
+        controller.OnIdle += Idle;
+        controller.OnLookAt += LookAt;
+    }
 
-     public virtual void Attack()
-     {
-         
-     }
+    private void Idle()
+    {
+        _rb.velocity = Vector3.zero;
+    }
 
-     public virtual void Die()
-     {
-         
-     }
-     
-     
+    private void Move(Vector3 dir)
+    {
+        print("Muevete MALDITO");
+        var dirNorm = dir.normalized;
+        _rb.velocity = dirNorm * data.speed;
+ 
+    }
 
+    private void LookAt(Vector3 dir)
+    {
+        _transform.forward = dir.normalized;
+    }
 
- }
+    private void Attack()
+    {
+        Debug.Log("Pew pew");
+    }
+
+    private void Die()
+    {
+    }
+}

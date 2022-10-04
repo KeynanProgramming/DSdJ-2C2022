@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterM : MonoBehaviour
+public class CharacterM : MonoBehaviour, IVel
 {
     [SerializeField] private Camera cameraObject;
     [SerializeField] private LayerMask mouseColliderLayerMask;
@@ -8,9 +8,12 @@ public class CharacterM : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private GameObject volleyPrefab;
 
+
     public Rigidbody RigidBody { get; private set; }
     public CharacterStats Stats { get; private set; }
     public Health Health { get; private set; }
+
+    private float _lastMoveMagnitude;
 
     public Vector3 GetMouseWorldPosition()
     {
@@ -20,7 +23,7 @@ public class CharacterM : MonoBehaviour
 
     private void Awake()
     {
-        RigidBody = GetComponent<Rigidbody>();
+        RigidBody = GetComponent<Rigidbody>();  
         Stats = GetComponent<CharacterStats>();
         Health = GetComponent<Health>();
     }
@@ -103,4 +106,10 @@ public class CharacterM : MonoBehaviour
         var aoe = go.GetComponent<AreaOfEffect>();
         aoe.Init(Stats.TotalVolleyArea, Stats.TotalDamage, Stats.VolleyDuration);
     }
+
+    public float Vel {    
+        get => _lastMoveMagnitude;
+        private set => _lastMoveMagnitude = value;
+    }
+
 }

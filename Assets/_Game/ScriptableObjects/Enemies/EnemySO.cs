@@ -6,4 +6,7 @@ public class EnemySO : ScriptableObject
     public float maxLife;
     public float speed;
     public float damage;
+    public float distanceToAttack;
+    public float attackTimeLenght;
+    public float idleTimeLenght;
 }
