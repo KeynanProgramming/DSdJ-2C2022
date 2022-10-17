@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c9df192d7d4854bb4febf716731333, type: 3}
+  m_Name: DOWN
+  m_EditorClassIdentifier: 
+  <PosibleRooms>k__BackingField:
+  - {fileID: 3437173767695059710, guid: a3e38c6b711474d45a817e8b5b43b7a8, type: 3}
+  - {fileID: 3034922396338387396, guid: c0a188e9b4e884ffdad8da5c1dac98e3, type: 3}
+  - {fileID: 175657781797573005, guid: c2756edc51ba74de199302ced24820ae, type: 3}
+  - {fileID: 2705387470183121666, guid: 5747049dcc0e4452ca0f78ec71d9778f, type: 3}
+  <CloseRooms>k__BackingField:
+  - {fileID: 3391782425832076939, guid: 5d8a34291b8d94135873ff6392b31879, type: 3}

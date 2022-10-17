@@ -1,35 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Game.Scripts.LevelGeneration;
 using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    [SerializeField] private RoomStats stats;
-    [SerializeField] private Transform[] obstaclesAnchors;
-    [SerializeField] private Transform[] enemiesSpawnPoints;
-    [SerializeField] public bool isBossRoom;
-    public void InstanceRoom()
-    {
-        if (isBossRoom)
-        {
-            Instantiate(stats.BossRoomType, transform.position, Quaternion.identity);
-            return;
-        }
-       // InstanceObstacles();
-        var i = Random.Range(0, stats.Rooms.Length);
-        var room = stats.Rooms[i];
-        Instantiate(room, transform.position, Quaternion.identity);
-    }
-    private void InstanceEnemies()
+    [SerializeField] private RoomSO roomToInstantiate;
+    
+    // Start is called before the first frame update
+    void Start()
     {
         
     }
-    private void InstanceObstacles()
+
+    // Update is called once per frame
+    void Update()
     {
-        for (int i = 0; i < obstaclesAnchors.Length; i++)
+        
+    }
+
+    public void Initialize()
+    {
+        if (IsRoomOcupped())
         {
-            var randomObstacle = Random.Range(0, stats.Obstacles.Length);
-            Instantiate(stats.Obstacles[randomObstacle], obstaclesAnchors[i].position, Quaternion.identity);
+            Destroy(gameObject);
         }
+        else
+        {
+             
+            RoomInstance();
+        }
+    }
+
+    private Room SelectRoom(Room[] roomArray)
+    {
+        int index = Random.Range(0, roomArray.Length);
+        Room selectedRoom = roomToInstantiate.PosibleRooms[index];
+        return selectedRoom;
+    }
+    private bool IsRoomOcupped()
+    {
+        int colliders = Physics.OverlapSphereNonAlloc(transform.position,2f,new Collider[1]);
+        return colliders >= 1;
+    }
+
+    private void RoomInstance()
+    {
+        var newRoom = Instantiate(SelectRoom(roomToInstantiate.PosibleRooms), transform);
+        LevelManager.Instance.lastRoom = newRoom;
+    }
+
+    public void CloseRoomInstance()
+    {
+        if (IsRoomOcupped())
+        {
+            return;
+        }
+        var newRoom =  Instantiate(SelectRoom(roomToInstantiate.CloseRooms), transform);
+        LevelManager.Instance.lastRoom = newRoom;
     }
 }

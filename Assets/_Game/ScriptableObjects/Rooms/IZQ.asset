@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c9df192d7d4854bb4febf716731333, type: 3}
+  m_Name: IZQ
+  m_EditorClassIdentifier: 
+  <PosibleRooms>k__BackingField:
+  - {fileID: 3034922396338387396, guid: c0a188e9b4e884ffdad8da5c1dac98e3, type: 3}
+  - {fileID: -2060069697188509086, guid: 9ab8e337aa91a4a24960edae8498fdd0, type: 3}
+  - {fileID: 1297473440951303424, guid: b890367d2649a41e2881cc90393fb00e, type: 3}
+  - {fileID: 2705387470183121666, guid: 5747049dcc0e4452ca0f78ec71d9778f, type: 3}
+  <CloseRooms>k__BackingField:
+  - {fileID: 5202924935706802196, guid: 6cc599abc5fb84d619126d9500a34eee, type: 3}
