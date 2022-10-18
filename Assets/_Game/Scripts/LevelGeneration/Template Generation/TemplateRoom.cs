@@ -1,5 +1,4 @@
 ﻿using System;
-using _Game.Scripts.LevelGeneration.Template_Generation;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -9,7 +8,7 @@ public class TemplateRoom : MonoBehaviour
     [SerializeField] private Transform[] obstacles;
     [SerializeField] private Transform chest;
     [SerializeField] private Transform bossSpawnPoint;
-    [SerializeField] private RoomTemplatesSo roomTemplatesSo;
+    [FormerlySerializedAs("roomTemplatesSo")] [SerializeField] private TemplateSO templateSo;
     public bool roomHasGenerated = false;
     public bool isSpawnPoint;
 
@@ -25,8 +24,8 @@ public class TemplateRoom : MonoBehaviour
     {
         foreach (var obstacleSpawnPoint in obstacles)
         {
-            var index = Random.Range(0, roomTemplatesSo.Obstacles.Length);
-            Instantiate(roomTemplatesSo.Obstacles[index], obstacleSpawnPoint.transform);
+            var index = Random.Range(0, templateSo.Obstacles.Length);
+            Instantiate(templateSo.Obstacles[index], obstacleSpawnPoint.transform);
         }
 
         roomHasGenerated = true;
@@ -34,14 +33,14 @@ public class TemplateRoom : MonoBehaviour
 
     public void GenerateChestRoom()
     {
-        Instantiate(roomTemplatesSo.Chest, chest.transform);
+        Instantiate(templateSo.Chest, chest.transform);
         roomHasGenerated = true;
 
     }
 
     public void GenerateBossRoom()
     {
-        Instantiate(roomTemplatesSo.Boss, bossSpawnPoint);
+        Instantiate(templateSo.Boss, bossSpawnPoint);
         roomHasGenerated = true;
 
     }

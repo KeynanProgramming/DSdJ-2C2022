@@ -44,7 +44,14 @@ public class TemplateRoomStorer : MonoBehaviour
     private void RandomizeBossRooms()
     {
         var room = possibleBossRooms[GetRandomIndex(possibleBossRooms.Length)];
-        room.GenerateBossRoom();
+        if (!room.roomHasGenerated)
+        {
+            room.GenerateBossRoom();
+        }
+        else
+        {
+            RandomizeBossRooms();
+        }
     }
 
     private void RandomizeDefaultRooms()
