@@ -1657,10 +1657,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ce1198a023ebe478ed9b865067bbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraObject: {fileID: 0}
   mouseColliderLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 7863
   firePoint: {fileID: 8478570185315648645}
   projectilePrefab: {fileID: 2047663201941841340, guid: ef45b668a597e074a81d8faf1a4fcb4c,
     type: 3}

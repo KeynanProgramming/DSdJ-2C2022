@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 using UnityEngine;
-
+[RequireComponent(typeof(CharacterM),typeof(CharacterV))]
 public class CharacterC : MonoBehaviour
 {
     public CharacterM CharacterM { get; private set; }

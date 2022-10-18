@@ -9,18 +9,24 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        // if (LevelManager.Instance.CanSpawnMoreRooms())
+        //Initialize();
+        if (LevelManager.Instance.CanSpawnMoreRooms())
+        {
+            if (LevelManager.Instance.HasToSpawnLastRooms())
+            {
+                InstanceLastRooms();
+            }
+            else
+            {
+                InstanceRooms();
+
+            }
+        }
+        // if (LevelManager.Instance.HasToSpawnLastRooms())
         // {
-        //     if (LevelManager.Instance.HasToSpawnLastRooms())
-        //     {
-        //         InstanceLastRooms();
-        //     }
-        //     else
-        //     {
-        //         InstanceRooms();
-        //
-        //     }
+        //     Initialize();
         // }
+    
 
     }
 

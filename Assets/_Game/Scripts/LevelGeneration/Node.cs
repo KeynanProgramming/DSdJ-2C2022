@@ -21,15 +21,19 @@ public class Node : MonoBehaviour
 
     public void Initialize()
     {
-        if (IsRoomOcupped())
+        if (LevelManager.Instance.CanSpawnMoreRooms())
         {
-            Destroy(gameObject);
-        }
-        else
-        {
+            if (IsRoomOcupped())
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
              
-            RoomInstance();
+                RoomInstance();
+            }
         }
+  
     }
 
     private Room SelectRoom(Room[] roomArray)
@@ -45,18 +49,20 @@ public class Node : MonoBehaviour
     }
 
     private void RoomInstance()
-    {
+    { 
         var newRoom = Instantiate(SelectRoom(roomToInstantiate.PosibleRooms), transform);
         LevelManager.Instance.lastRoom = newRoom;
+        //LevelManager.Instance.currentRoomCount++;
     }
 
     public void CloseRoomInstance()
     {
         if (IsRoomOcupped())
         {
-            return;
+            Destroy(gameObject);
         }
-        var newRoom =  Instantiate(SelectRoom(roomToInstantiate.CloseRooms), transform);
+        var newRoom = Instantiate(SelectRoom(roomToInstantiate.CloseRooms), transform);
+        //LevelManager.Instance.currentRoomCount++;
         LevelManager.Instance.lastRoom = newRoom;
     }
 }

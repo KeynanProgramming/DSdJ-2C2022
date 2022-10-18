@@ -20,9 +20,8 @@ public class LevelManager : MonoBehaviour
 
         private void Start()
         {
-            var room = Instantiate(startRoom, Vector3.zero, Quaternion.identity);
-            lastRoom = room;
-            StartCoroutine(GenerateRooms());
+           startRoom = Instantiate(startRoom, Vector3.zero, Quaternion.identity);
+           StartCoroutine(GenerateRooms());
         }
 
         public bool CanSpawnMoreRooms()
@@ -39,12 +38,13 @@ public class LevelManager : MonoBehaviour
         {
             for (int i = 0; i < MaxRooms; i++)
             {
-                lastRoom.Initialize();
                 currentRoomCount++;
+                lastRoom.Initialize();
                 yield return new WaitForSeconds(1f);
             }
 
             yield return new WaitUntil(() => !CanSpawnMoreRooms());
-            lastRoom.InstanceLastRooms();
+            StopCoroutine(GenerateRooms());
+            //lastRoom.InstanceLastRooms();
         }
 }
